@@ -1,10 +1,42 @@
 body {
+  background: navy;
   font: 500 1em/1.4 $primary-font;
+  overflow: hidden;
   text-rendering: optimizeLegibility;
 }
 
 .map {
+  @include animation(map-intro 3s both);
   display: block;
-  height: 70vh;
-  margin: 15vh auto 0;
+  height: 120vh;
+  @include position(absolute, 0px 0px 0px 0px);
+  z-index: 1;
+
+  polygon {
+    cursor: pointer;
+  }
+}
+
+h1 {
+  @include animation(title-intro 3s ease both);
+  color: white;
+  font: 800 10vh/1 $primary-font;
+  @include position(absolute, 45vh 0px 0 0px);
+  text-align: center;
+  text-transform: uppercase;
+  @include user-select(none);
+  z-index: 2;
+}
+
+.description-texts {
+
+}
+
+.description-text {
+  color: white;
+  display: none;
+
+  &.active {
+    display: block;
+  }
 }
