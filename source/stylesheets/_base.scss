@@ -1,0 +1,10 @@
+body {
+  font: 500 1em/1.4 $primary-font;
+  text-rendering: optimizeLegibility;
+}
+
+.map {
+  display: block;
+  height: 70vh;
+  margin: 15vh auto 0;
+}
