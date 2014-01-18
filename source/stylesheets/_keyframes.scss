@@ -22,7 +22,7 @@
 @include keyframes(map-intro) {
   0% {
     top: 0vh;
-    @include transform(scale(1.2));
+    @include transform(scale(6));
   }
 
   100% {

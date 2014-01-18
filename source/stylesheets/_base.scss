@@ -5,23 +5,11 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.map {
-  @include animation(map-intro 3s both);
-  display: block;
-  height: 120vh;
-  @include position(absolute, 0px 0px 0px 0px);
-  z-index: 1;
-
-  polygon {
-    cursor: pointer;
-  }
-}
-
 h1 {
-  @include animation(title-intro 3s ease both);
+  @include animation(title-intro 6s ease both);
   color: white;
-  font: 800 10vh/1 $primary-font;
-  @include position(absolute, 45vh 0px 0 0px);
+  font: 800 8vh/1 $primary-font;
+  @include position(absolute, 44vh 0px 0 0px);
   text-align: center;
   text-transform: uppercase;
   @include user-select(none);
@@ -40,3 +28,17 @@ h1 {
     display: block;
   }
 }
+
+.map {
+  @include animation(map-intro 5s both);
+  @include animation-delay(1s);
+  display: block;
+  height: 120vh;
+  @include position(absolute, 0px 0px 0px 0px);
+  z-index: 1;
+
+  polygon {
+    cursor: pointer;
+  }
+}
+
