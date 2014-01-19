@@ -6,14 +6,22 @@ body {
 }
 
 h1 {
-  @include animation(title-intro 6s ease both);
+  @include animation(title-intro 5s ease both);
+  @include animation-delay(1s);
   color: white;
-  font: 800 8vh/1 $primary-font;
+  font: 800 5vh/1.4 $primary-font;
+  letter-spacing: .2em;
+  margin: 0;
   @include position(absolute, 44vh 0px 0 0px);
   text-align: center;
   text-transform: uppercase;
   @include user-select(none);
   z-index: 2;
+
+  span {
+    display: block;
+    font-weight: 100;
+  }
 }
 
 .description-texts {
@@ -30,15 +38,20 @@ h1 {
 }
 
 .map {
-  @include animation(map-intro 5s both);
+  @include animation(map-intro 5s ease both);
   @include animation-delay(1s);
   display: block;
-  height: 120vh;
-  @include position(absolute, 0px 0px 0px 0px);
+  @include position(absolute, 2vh 0 0px 0px);
   z-index: 1;
 
   polygon {
     cursor: pointer;
+  }
+
+  @for $polygon from 1 through 7 {
+    polygon:nth-child(#{$polygon}) {
+      fill: desaturate(blue, $polygon*8);
+    }
   }
 }
 

@@ -3,7 +3,7 @@
     opacity: 1;
   }
 
-  80% {
+  85% {
     opacity: 1;
   }
 
@@ -21,12 +21,14 @@
 
 @include keyframes(map-intro) {
   0% {
-    top: 0vh;
-    @include transform(scale(6));
+    @include transform(scale(50) translateX(20%));
+  }
+
+  20% {
+    @include transform(scale(50) translateX(10%));
   }
 
   100% {
-    top: 25vh;
-    @include transform(scale(1));
+    @include transform(scale(1) translateX(0%));
   }
 }
