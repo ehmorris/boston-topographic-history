@@ -1,5 +1,5 @@
 body {
-  background: navy;
+  background: #222;
   font: 500 1em/1.4 $primary-font;
   overflow: hidden;
   text-rendering: optimizeLegibility;
@@ -25,15 +25,20 @@ h1 {
 }
 
 .description-texts {
-
+  z-index: 2;
 }
 
 .description-text {
   color: white;
   display: none;
+  max-width: 25vw;
+  opacity: 0;
+  @include position(absolute, 2em 0 0 2em);
+  @include transition(.5s ease);
 
   &.active {
     display: block;
+    opacity: 1;
   }
 }
 
@@ -46,11 +51,16 @@ h1 {
 
   polygon {
     cursor: pointer;
+
+    &:hover, &[active=active] {
+      @include animation(pulse 2s infinite ease)
+    }
   }
 
   @for $polygon from 1 through 7 {
     polygon:nth-child(#{$polygon}) {
-      fill: desaturate(blue, $polygon*8);
+      $polygon: $polygon + 200;
+      fill: hsl($polygon*8, 65%, 70%);
     }
   }
 }

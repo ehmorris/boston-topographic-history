@@ -19,6 +19,20 @@
   }
 }
 
+@include keyframes(pulse) {
+  0% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: .9;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @include keyframes(map-intro) {
   0% {
     @include transform(scale(50) translateX(20%));
