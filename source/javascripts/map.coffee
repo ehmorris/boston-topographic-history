@@ -5,13 +5,21 @@ $ ->
 
   $('.year').on 'click', ->
     if !$(@).hasClass('active')
-      year_name = $(@).data('name')
-      map_section = $(".map .#{year_name}")
-      activateMapSection(map_section)
+      activateMapSection(findMapSectionViaTimeline(@))
 
   $('.year .close').on 'click', ->
     closeAllYears()
     return false
+
+  $('.year').hover ->
+    if !$(@).hasClass('active')
+      activateMapHint(@)
+  , deactivateHints
+
+  $('.map polygon').hover ->
+    if !$(@).attr('active')
+      activateTimelineHint(@)
+  , deactivateHints
 
 plotGraph = ->
   $('.graph .year').each ->
@@ -30,13 +38,33 @@ plotGraph = ->
     }
 
 activateMapSection = (map_section) ->
-  graph_target = $(map_section).attr('class')
-
+  graph_target = findTimelineItemViaMap(map_section)
   closeAllYears()
-  $(".year[data-name=#{graph_target}]").addClass 'active'
+  graph_target.addClass 'active'
   $(map_section).attr 'active', 'active'
 
 closeAllYears = ->
   $('.year').removeClass 'active'
   $(".map polygon").attr 'active', ''
-  console.log 'test'
+
+activateMapHint = (timeline_item) ->
+  map_section = findMapSectionViaTimeline(timeline_item)
+  $(map_section).attr 'hint', 'hint'
+
+activateTimelineHint = (map_section) ->
+  timeline_item = findTimelineItemViaMap(map_section)
+  $(timeline_item).addClass 'hint'
+
+deactivateHints = ->
+  $('.year').removeClass 'hint'
+  $('.map polygon').attr 'hint', ''
+
+# PRIVATE / HELPERS
+
+findMapSectionViaTimeline = (timeline_item) ->
+  map_target = $(timeline_item).data('name')
+  $(".map .#{map_target}")
+
+findTimelineItemViaMap = (map_section) ->
+  graph_target = $(map_section).attr('class')
+  $(".year[data-name=#{graph_target}]")

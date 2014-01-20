@@ -47,6 +47,11 @@ h1 {
       }
     }
 
+    &.hint {
+      background: white !important;
+      color: #222;
+    }
+
     &.active {
       cursor: default;
       height: 100vh;
@@ -89,12 +94,10 @@ h1 {
 
   polygon {
     cursor: pointer;
+    @include transition(.3s);
 
-    &:hover, &[active=active] {
-      stroke: white;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 10;
+    &[hint=hint], &[active=active] {
+      fill: #fff !important;
     }
   }
 
