@@ -6,14 +6,12 @@ body {
 }
 
 h1 {
-  //@include animation(title-intro 5s ease both);
   @include animation(title-intro 1s ease both);
-  //@include animation-delay(1s);
   color: white;
   font: 800 5vh/1.4 $primary-font;
   letter-spacing: .2em;
   margin: 0;
-  @include position(absolute, 44vh 0px 0 0px);
+  @include position(absolute, 40vh 0px 0 0px);
   text-align: center;
   text-transform: uppercase;
   @include user-select(none);
@@ -25,15 +23,51 @@ h1 {
   }
 }
 
+.intro {
+  @include animation(title-intro 2s ease both);
+  @include animation-delay(1s);
+  color: white;
+  font-size:  3vh;
+  margin: 26vh auto 0;
+  position: relative;
+  width: 60%;
+  z-index: 3;
+}
+
+.graph-key {
+  @include position(absolute, 0px 0px 0 0px);
+  z-index: 1;
+
+  .beginning {
+    float: left;
+  }
+
+  .end {
+    float: right;
+  }
+
+  p {
+    color: white;
+    font: bold 2vh/4vh $primary-font;
+    margin: 0;
+    padding: 0 .5rem;
+  }
+}
+
 .graph {
+  @include animation(graph-intro 3s ease backwards);
+  @include animation-delay(2.8s);
   @include position(absolute, 0px 0px 0 0px);
   z-index: 2;
 
   .year {
     color: white;
     cursor: pointer;
+    font-size: 2vh;
     height: 4vh;
+    padding: 0;
     @include position(absolute, 0 0 0 0);
+    @include transform(scale(1));
     @include transition(.3s ease);
     @include user-select(none);
     white-space: nowrap;
@@ -48,19 +82,24 @@ h1 {
     }
 
     &.hint {
-      background: white !important;
-      color: #222;
+      @include transform(scale(1.2));
+      z-index: 3;
     }
 
     &.active {
       cursor: default;
       height: 100vh;
       left: 50% !important;
+      padding: 2vh;
       @include position(absolute, 0px 0 0 0);
       @include user-select(all);
       white-space: normal;
       width: 50% !important;
       z-index: 3;
+
+      h2 {
+        padding-left: 0;
+      }
 
       h2 span, .desc, .close {
         opacity: 1;
@@ -68,10 +107,10 @@ h1 {
     }
 
     h2 {
-      font-size: 2vh;
-      line-height: 4vh;
+      font: bold 2vh/4vh $primary-font;
       margin: 0;
-      text-indent: .5rem;
+      padding-left: .5rem;
+      @include transition(.3s);
     }
 
     h2 span, .desc, .close {
@@ -83,13 +122,12 @@ h1 {
 
 
 .map {
-  //@include animation(map-intro 5s ease both);
-  //@include animation-delay(1s);
   @include animation(map-intro 1s ease both);
+  @include animation-delay(2s);
   display: block;
-  max-height: 100vh;
+  max-height: 85vh;
   max-width: 90vw;
-  @include position(absolute, 2vh 0 0px 0px);
+  @include position(absolute, 15vh 0 0px 0px);
   z-index: 1;
 
   polygon {

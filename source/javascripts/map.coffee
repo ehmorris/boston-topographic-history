@@ -1,11 +1,11 @@
 $ ->
   plotGraph()
   $('.map polygon').on 'click', ->
-    activateMapSection(@)
+    activateDetailSectionViaMap(@)
 
   $('.year').on 'click', ->
     if !$(@).hasClass('active')
-      activateMapSection(findMapSectionViaTimeline(@))
+      activateDetailSectionViaMap(findMapSectionViaTimeline(@))
 
   $('.year .close').on 'click', ->
     closeAllYears()
@@ -37,9 +37,10 @@ plotGraph = ->
       width: width_percent+'%'
     }
 
-activateMapSection = (map_section) ->
+activateDetailSectionViaMap = (map_section) ->
   graph_target = findTimelineItemViaMap(map_section)
   closeAllYears()
+  deactivateHints()
   graph_target.addClass 'active'
   $(map_section).attr 'active', 'active'
 
