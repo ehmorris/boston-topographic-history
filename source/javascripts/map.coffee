@@ -3,6 +3,16 @@ $ ->
   $('.map polygon').on 'click', ->
     activateMapSection(@)
 
+  $('.year').on 'click', ->
+    if !$(@).hasClass('active')
+      year_name = $(@).data('name')
+      map_section = $(".map .#{year_name}")
+      activateMapSection(map_section)
+
+  $('.year .close').on 'click', ->
+    closeAllYears()
+    return false
+
 plotGraph = ->
   $('.graph .year').each ->
     boston_founded = 1630
@@ -22,8 +32,11 @@ plotGraph = ->
 activateMapSection = (map_section) ->
   graph_target = $(map_section).attr('class')
 
-  $('.year').removeClass 'active'
+  closeAllYears()
   $(".year[data-name=#{graph_target}]").addClass 'active'
-
-  $(".map polygon").attr 'active', ''
   $(map_section).attr 'active', 'active'
+
+closeAllYears = ->
+  $('.year').removeClass 'active'
+  $(".map polygon").attr 'active', ''
+  console.log 'test'

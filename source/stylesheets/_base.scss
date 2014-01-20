@@ -32,38 +32,45 @@ h1 {
   .year {
     background: #ccc;
     color: white;
-    height: 2rem;
-    position: absolute;
-    @include transition(1s);
+    cursor: pointer;
+    height: 4vh;
+    @include position(absolute, 0 0 0 0);
+    @include transition(.3s ease);
+    @include user-select(none);
+    white-space: nowrap;
+    z-index: 2;
 
     @for $timeline-item from 0 through 9 {
       &:nth-child(#{$timeline-item+1}) {
-        top: #{2*$timeline-item}rem;
+        top: #{4*$timeline-item}vh;
       }
     }
 
     &.active {
+      cursor: default;
       height: 100vh;
-      @include position(absolute, 0px 0px 0px 50%);
+      left: 50% !important;
+      @include position(absolute, 0px 0 0 0);
+      @include user-select(all);
+      white-space: normal;
+      width: 50% !important;
+      z-index: 3;
 
-      h2 span, .desc {
-        display: block;
+      h2 span, .desc, .close {
+        opacity: 1;
       }
     }
 
     h2 {
-      font-size: 1rem;
-      line-height: 2rem;
+      font-size: 2vh;
+      line-height: 4vh;
       margin: 0;
-      text-align: center;
-
-      span {
-        display: none;
-      }
+      text-indent: .5rem;
     }
 
-    .desc {
-      display: none;
+    h2 span, .desc, .close {
+      opacity: 0;
+      @include transition(.3s ease);
     }
   }
 }
