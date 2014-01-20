@@ -1,6 +1,7 @@
 $ ->
   plotGraph()
-  $('.map polygon').on 'click', activateMapSection(@)
+  $('.map polygon').on 'click', ->
+    activateMapSection(@)
 
 plotGraph = ->
   $('.graph .year').each ->
@@ -19,10 +20,10 @@ plotGraph = ->
     }
 
 activateMapSection = (map_section) ->
-  year_target = $(map_section).attr('class').replace /\D+/, ''
+  graph_target = $(map_section).attr('class')
 
-  $(".description-text").removeClass 'active'
-  $(".description-text[data-year=#{year_target}]").addClass 'active'
+  $('.year').removeClass 'active'
+  $(".year[data-name=#{graph_target}]").addClass 'active'
 
   $(".map polygon").attr 'active', ''
   $(map_section).attr 'active', 'active'
