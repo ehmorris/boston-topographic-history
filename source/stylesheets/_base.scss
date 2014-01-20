@@ -6,8 +6,9 @@ body {
 }
 
 h1 {
-  @include animation(title-intro 5s ease both);
-  @include animation-delay(1s);
+  //@include animation(title-intro 5s ease both);
+  @include animation(title-intro 1s ease both);
+  //@include animation-delay(1s);
   color: white;
   font: 800 5vh/1.4 $primary-font;
   letter-spacing: .2em;
@@ -24,28 +25,57 @@ h1 {
   }
 }
 
-.description-texts {
+.graph {
+  @include position(absolute, 0px 0px 0 0px);
   z-index: 2;
-}
 
-.description-text {
-  color: white;
-  display: none;
-  max-width: 25vw;
-  opacity: 0;
-  @include position(absolute, 2em 0 0 2em);
-  @include transition(.5s ease);
+  .year {
+    background: #ccc;
+    color: white;
+    height: 2rem;
+    position: absolute;
+    @include transition(1s);
 
-  &.active {
-    display: block;
-    opacity: 1;
+    @for $timeline-item from 0 through 9 {
+      &:nth-child(#{$timeline-item+1}) {
+        top: #{2*$timeline-item}rem;
+      }
+    }
+
+    &.active {
+      height: 100vh;
+      @include position(absolute, 0px 0px 0px 50%);
+
+      h2 span, .desc {
+        display: block;
+      }
+    }
+
+    h2 {
+      font-size: 1rem;
+      line-height: 2rem;
+      margin: 0;
+      text-align: center;
+
+      span {
+        display: none;
+      }
+    }
+
+    .desc {
+      display: none;
+    }
   }
 }
 
+
 .map {
-  @include animation(map-intro 5s ease both);
-  @include animation-delay(1s);
+  //@include animation(map-intro 5s ease both);
+  //@include animation-delay(1s);
+  @include animation(map-intro 1s ease both);
   display: block;
+  max-height: 100vh;
+  max-width: 90vw;
   @include position(absolute, 2vh 0 0px 0px);
   z-index: 1;
 
