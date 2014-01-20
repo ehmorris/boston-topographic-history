@@ -30,7 +30,6 @@ h1 {
   z-index: 2;
 
   .year {
-    background: #ccc;
     color: white;
     cursor: pointer;
     height: 4vh;
@@ -40,9 +39,11 @@ h1 {
     white-space: nowrap;
     z-index: 2;
 
-    @for $timeline-item from 0 through 9 {
+    @for $timeline-item from 0 through 6 {
       &:nth-child(#{$timeline-item+1}) {
         top: #{4*$timeline-item}vh;
+        $timeline-item-color-multiplier: ($timeline-item+2) + 200;
+        background: hsl($timeline-item-color-multiplier*8, 65%, 70%);
       }
     }
 
@@ -90,14 +91,17 @@ h1 {
     cursor: pointer;
 
     &:hover, &[active=active] {
-      @include animation(pulse 2s infinite ease)
+      stroke: white;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 10;
     }
   }
 
   @for $polygon from 1 through 7 {
     polygon:nth-child(#{$polygon}) {
-      $polygon: $polygon + 200;
-      fill: hsl($polygon*8, 65%, 70%);
+      $polygon-color-multiplier: $polygon + 200;
+      fill: hsl($polygon-color-multiplier*8, 65%, 70%);
     }
   }
 }
