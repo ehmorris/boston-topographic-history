@@ -116,7 +116,12 @@ body {
       z-index: 3;
     }
 
+    &.inactive {
+      opacity: 0;
+    }
+
     &.active {
+      box-shadow: 0 0 50px #222;
       cursor: default;
       height: 100vh;
       left: 50% !important;
@@ -185,7 +190,7 @@ body {
 .map {
   display: block;
   max-height: 85vh;
-  max-width: 90vw;
+  max-width: 50vw;
   @include position(absolute, 15vh 0 0px 0px);
   @include transform(scale(50) translateX(20%));
   z-index: 1;
@@ -201,6 +206,10 @@ body {
     &[hint=hint], &[active=active] {
       fill: #fff !important;
     }
+  }
+
+  polygon.original {
+    cursor: default;
   }
 
   @for $polygon from 1 through 7 {
