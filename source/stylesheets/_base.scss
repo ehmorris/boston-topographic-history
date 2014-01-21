@@ -86,8 +86,8 @@ body {
   z-index: 2;
 
   &.active {
-    @include animation(graph-intro 5s ease backwards);
-    @include animation-delay(.5s);
+    @include animation(graph-intro 1s ease both);
+    @include animation-delay(.75s);
   }
 
   .year {
