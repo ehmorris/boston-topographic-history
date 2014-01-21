@@ -120,7 +120,7 @@ body {
       cursor: default;
       height: 100vh;
       left: 50% !important;
-      padding: 2vh;
+      padding: 4vh;
       @include position(absolute, 0px 0 0 0);
       @include user-select(all);
       width: 50% !important;
@@ -130,11 +130,27 @@ body {
         left: 0;
         text-align: left;
         width: auto;
+        margin: 0;
       }
 
       .desc {
         display: block;
         opacity: 1;
+
+        h3 {
+          font-size: 8vh;
+          margin: 0 0 .5em;
+        }
+
+        article {
+          font-size: 3vh;
+          height: 65vh;
+          overflow-y: scroll;
+
+          p {
+            margin-top: 0;
+          }
+        }
       }
     }
 
