@@ -7,7 +7,7 @@ body {
 
 .title {
   align-items: center;
-  @include animation(title-intro 3s ease both);
+  @include animation(title-intro 5s ease both);
   display: flex;
   @include position(absolute, 0px 0px 0px 0px);
   @include user-select(none);
@@ -31,7 +31,7 @@ body {
 .intro {
   align-items: center;
   @include animation(intro-intro 3s ease both);
-  @include animation-delay(2.5s);
+  @include animation-delay(4.5s);
   color: white;
   display: flex;
   font-size:  $graph-font-size;
