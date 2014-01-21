@@ -1,6 +1,6 @@
 $ ->
   plotGraph()
-  $('.map polygon:not(.original)').on 'click', ->
+  $('.map path:not(.original)').on 'click', ->
     activateDetailSectionViaMap(@)
 
   $('.year').on 'click', ->
@@ -16,7 +16,7 @@ $ ->
       activateMapHint(@)
   , deactivateHints
 
-  $('.map polygon').hover ->
+  $('.map path').hover ->
     if !$(@).attr('active')
       activateTimelineHint(@)
   , deactivateHints
@@ -48,13 +48,15 @@ activateDetailSectionViaMap = (map_section) ->
   closeAllYears()
   deactivateHints()
   $('.year').addClass 'inactive'
+  $('.graph-key').addClass 'inactive'
   graph_target.removeClass('inactive').addClass 'active'
   $(map_section).attr 'active', 'active'
 
 closeAllYears = ->
   $('.year').removeClass 'active'
   $('.year').removeClass 'inactive'
-  $(".map polygon").attr 'active', ''
+  $('.graph-key').removeClass 'inactive'
+  $(".map path").attr 'active', ''
 
 activateMapHint = (timeline_item) ->
   map_section = findMapSectionViaTimeline(timeline_item)
@@ -66,7 +68,7 @@ activateTimelineHint = (map_section) ->
 
 deactivateHints = ->
   $('.year').removeClass 'hint'
-  $('.map polygon').attr 'hint', ''
+  $('.map path').attr 'hint', ''
 
 # PRIVATE / HELPERS
 

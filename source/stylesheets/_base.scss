@@ -34,7 +34,7 @@ body {
   @include animation-delay(2.5s);
   color: white;
   display: flex;
-  font-size:  3vh;
+  font-size:  $graph-font-size;
   margin: auto;
   @include position(absolute, 0px 0px 0px 0px);
   @include transition(1s);
@@ -62,7 +62,12 @@ body {
 
 .graph-key {
   @include position(absolute, 0px 0px 0 0px);
+  @include transition(.3s);
   z-index: 1;
+
+  &.inactive {
+    opacity: 0;
+  }
 
   .beginning {
     float: left;
@@ -74,7 +79,7 @@ body {
 
   p {
     color: white;
-    font: bold 2vh/4vh $primary-font;
+    font: bold #{$graph-font-size}/#{$graph-font-height} $primary-font;
     margin: 0;
     padding: 0 .5rem;
   }
@@ -94,8 +99,8 @@ body {
     @include box-sizing(border-box);
     color: white;
     cursor: pointer;
-    font-size: 2vh;
-    height: 4vh;
+    font-size: $graph-font-size;
+    height: $graph-font-height;
     padding: 0;
     @include position(absolute, 0 0 0 0);
     @include transform(scale(1));
@@ -105,8 +110,8 @@ body {
 
     @for $timeline-item from 0 through 6 {
       &:nth-child(#{$timeline-item+1}) {
-        top: #{4*$timeline-item}vh;
-        $timeline-item-color-multiplier: ($timeline-item+2) + 200;
+        top: $graph-font-height * $timeline-item;
+        $timeline-item-color-multiplier: ($timeline-item+2) + $color-wheel-rotation;
         background: hsl($timeline-item-color-multiplier*8, 65%, 70%);
       }
     }
@@ -125,7 +130,7 @@ body {
       cursor: default;
       height: 100vh;
       left: 50% !important;
-      padding: 4vh;
+      padding: $graph-font-height;
       @include position(absolute, 0px 0 0 0);
       @include user-select(all);
       width: 50% !important;
@@ -143,17 +148,21 @@ body {
         opacity: 1;
 
         h3 {
-          font-size: 8vh;
+          font-size: $graph-font-size * 2.5;
           margin: 0 0 .5em;
         }
 
         article {
-          font-size: 3vh;
-          height: 65vh;
+          font-size: $graph-font-size;
+          height: 60vh;
           overflow-y: scroll;
 
           p {
             margin-top: 0;
+          }
+
+          img {
+            width: 100%;
           }
         }
       }
@@ -161,13 +170,13 @@ body {
 
     h2 {
       @include box-sizing(border-box);
-      font: bold 2vh/4vh $primary-font;
+      font: bold #{$graph-font-size}/#{$graph-font-height} $primary-font;
       margin: 0;
       padding-right: .5rem;
-      @include position(relative, 0 0 0 -120px);
+      @include position(relative, 0 0 0 -200px);
       text-align: right;
       @include transition(.3s);
-      width: 120px;
+      width: 200px;
     }
 
     .desc {
@@ -175,10 +184,14 @@ body {
       opacity: 0;
       @include transition(.3s ease);
 
+      .cite a {
+        color: #eee;
+      }
+
       .close {
         background: rgba(0, 0, 0, .2);
         color: white;
-        padding: 4vh;
+        padding: $graph-font-height;
         @include position(absolute, 0 0px 0px 0px);
         text-decoration: none;
       }
@@ -190,8 +203,8 @@ body {
 .map {
   display: block;
   max-height: 85vh;
-  max-width: 50vw;
-  @include position(absolute, 15vh 0 0px 0px);
+  max-width: 45vw;
+  @include position(absolute, 0 0 0px 0px);
   @include transform(scale(50) translateX(20%));
   z-index: 1;
 
@@ -199,7 +212,7 @@ body {
     @include animation(map-intro 1s ease both);
   }
 
-  polygon {
+  path {
     cursor: pointer;
     @include transition(.3s);
 
@@ -208,14 +221,14 @@ body {
     }
   }
 
-  polygon.original {
+  path.original {
     cursor: default;
   }
 
-  @for $polygon from 1 through 7 {
-    polygon:nth-child(#{$polygon}) {
-      $polygon-color-multiplier: $polygon + 200;
-      fill: hsl($polygon-color-multiplier*8, 65%, 70%);
+  @for $path from 1 through 7 {
+    path:nth-child(#{$path}) {
+      $path-color-multiplier: $path + $color-wheel-rotation;
+      fill: hsl($path-color-multiplier*8, 65%, 70%);
     }
   }
 }
