@@ -21,6 +21,12 @@ $ ->
       activateTimelineHint(@)
   , deactivateHints
 
+  $('.end-intro').on 'click', ->
+    $('.intro').addClass 'inactive'
+    $('.map').attr 'class', 'map active'
+    $('.graph').addClass 'active'
+    return false
+
 plotGraph = ->
   $('.graph .year').each ->
     boston_founded = 1630

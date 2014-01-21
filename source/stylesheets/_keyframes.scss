@@ -23,12 +23,31 @@
   }
 }
 
-@include keyframes(graph-intro) {
+@include keyframes(intro-intro) {
   0% {
     opacity: 0;
   }
 
   15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    display: block;
+    z-index: 2;
+  }
+}
+
+@include keyframes(graph-intro) {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
     opacity: 1;
   }
 
@@ -56,7 +75,7 @@
     @include transform(scale(50) translateX(20%));
   }
 
-  20% {
+  10% {
     @include transform(scale(50) translateX(10%));
   }
 

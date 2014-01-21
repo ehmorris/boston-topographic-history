@@ -7,7 +7,7 @@ body {
 
 .title {
   align-items: center;
-  @include animation(title-intro 1s ease both);
+  @include animation(title-intro 3s ease both);
   display: flex;
   @include position(absolute, 0px 0px 0px 0px);
   @include user-select(none);
@@ -30,15 +30,34 @@ body {
 
 .intro {
   align-items: center;
-  @include animation(title-intro 2s ease both);
-  @include animation-delay(1s);
+  @include animation(intro-intro 3s ease both);
+  @include animation-delay(2.5s);
   color: white;
   display: flex;
   font-size:  3vh;
   margin: auto;
   @include position(absolute, 0px 0px 0px 0px);
+  @include transition(1s);
   width: 60%;
   z-index: 3;
+
+  &.inactive {
+    display: none;
+    opacity: 0;
+    z-index: -1;
+  }
+
+  .end-intro {
+    background: #81e4d0;
+    border-radius: 3px;
+    color: white;
+    display: block;
+    margin: 6vh auto 0;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    width: 40%;
+  }
 }
 
 .graph-key {
@@ -62,12 +81,17 @@ body {
 }
 
 .graph {
-  @include animation(graph-intro 3s ease backwards);
-  @include animation-delay(2.8s);
+  opacity: 0;
   @include position(absolute, 0px 0px 0 0px);
   z-index: 2;
 
+  &.active {
+    @include animation(graph-intro 5s ease backwards);
+    @include animation-delay(.5s);
+  }
+
   .year {
+    @include box-sizing(border-box);
     color: white;
     cursor: pointer;
     font-size: 2vh;
@@ -129,19 +153,30 @@ body {
       display: none;
       opacity: 0;
       @include transition(.3s ease);
+
+      .close {
+        background: rgba(0, 0, 0, .2);
+        color: white;
+        padding: 4vh;
+        @include position(absolute, 0 0px 0px 0px);
+        text-decoration: none;
+      }
     }
   }
 }
 
 
 .map {
-  @include animation(map-intro 1s ease both);
-  @include animation-delay(2s);
   display: block;
   max-height: 85vh;
   max-width: 90vw;
   @include position(absolute, 15vh 0 0px 0px);
+  @include transform(scale(50) translateX(20%));
   z-index: 1;
+
+  &.active {
+    @include animation(map-intro 1s ease both);
+  }
 
   polygon {
     cursor: pointer;
