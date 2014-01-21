@@ -5,17 +5,22 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-h1 {
+.title {
+  align-items: center;
   @include animation(title-intro 1s ease both);
-  color: white;
-  font: 800 5vh/1.4 $primary-font;
-  letter-spacing: .2em;
-  margin: 0;
-  @include position(absolute, 40vh 0px 0 0px);
-  text-align: center;
-  text-transform: uppercase;
+  display: flex;
+  @include position(absolute, 0px 0px 0px 0px);
   @include user-select(none);
   z-index: 2;
+
+  h1 {
+    color: white;
+    font: 800 5vh/1.4 $primary-font;
+    letter-spacing: .2em;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+  }
 
   span {
     display: block;
@@ -24,12 +29,14 @@ h1 {
 }
 
 .intro {
+  align-items: center;
   @include animation(title-intro 2s ease both);
   @include animation-delay(1s);
   color: white;
+  display: flex;
   font-size:  3vh;
-  margin: 26vh auto 0;
-  position: relative;
+  margin: auto;
+  @include position(absolute, 0px 0px 0px 0px);
   width: 60%;
   z-index: 3;
 }
@@ -70,7 +77,6 @@ h1 {
     @include transform(scale(1));
     @include transition(.3s ease);
     @include user-select(none);
-    white-space: nowrap;
     z-index: 2;
 
     @for $timeline-item from 0 through 6 {
@@ -93,27 +99,34 @@ h1 {
       padding: 2vh;
       @include position(absolute, 0px 0 0 0);
       @include user-select(all);
-      white-space: normal;
       width: 50% !important;
-      z-index: 3;
+      z-index: 4;
 
       h2 {
-        padding-left: 0;
+        left: 0;
+        text-align: left;
+        width: auto;
       }
 
-      h2 span, .desc, .close {
+      .desc {
+        display: block;
         opacity: 1;
       }
     }
 
     h2 {
+      @include box-sizing(border-box);
       font: bold 2vh/4vh $primary-font;
       margin: 0;
-      padding-left: .5rem;
+      padding-right: .5rem;
+      @include position(relative, 0 0 0 -120px);
+      text-align: right;
       @include transition(.3s);
+      width: 120px;
     }
 
-    h2 span, .desc, .close {
+    .desc {
+      display: none;
       opacity: 0;
       @include transition(.3s ease);
     }
