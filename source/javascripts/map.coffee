@@ -47,14 +47,16 @@ plotGraph = ->
 
 animateCurrentYear = (year) ->
   if $(year).prev('span').length
-    $(year).prev('span').css('opacity', 0)
+    $(year).prev('span').css 'display', 'none'
 
   $(year).css('opacity', 1)
 
-  if $(year).next('span').length  
+  if $(year).next('span').length
     setTimeout ->
       animateCurrentYear($(year).next('span'))
-    , 24.7
+    , (14000 / $('.current-year span').length)
+  else
+    $(year).css 'display', 'none'
 
 activateDetailSectionViaMap = (map_section) ->
   graph_target = findTimelineItemViaMap(map_section)

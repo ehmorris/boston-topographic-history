@@ -29,7 +29,7 @@ body {
   }
 }
 
-.harbor-marker, .current-year {
+.harbor-marker {
   color: rgba(255, 255, 255, .3);
   font-size: 7vh;
   letter-spacing: 3px;
@@ -41,12 +41,23 @@ body {
   z-index: 1;
 }
 
-.current-year span {
-  position: absolute;
-  opacity: 0;
+.current-year {
+  color: rgb(255, 255, 255);
+  font-size: 30vh;
+  letter-spacing: 3px;
+  line-height: 1;
+  margin: 0;
+  @include position(absolute, 35vh 0 0 0);
+  text-align: center;
+  text-transform: uppercase;
+  @include user-select(none);
+  width: 100%;
+  z-index: 3;
 
-  &:last-child {
-    opacity: 0 !important;
+  span {
+    @include position(absolute, 0 0 0 0px);
+    opacity: 0;
+    width: 100%;
   }
 }
 
@@ -142,6 +153,15 @@ body {
     @include transition(.3s ease);
     @include user-select(none);
     z-index: 2;
+
+    &:after {
+      background: #8D7B52;
+      content: '';
+      height: 5vh;
+      opacity: 0.2;
+      @include position(absolute, 0px 0 0 100%);
+      width: 10000%;
+    }
 
     @for $timeline-item from 0 through 6 {
       &:nth-child(#{$timeline-item+1}) {
