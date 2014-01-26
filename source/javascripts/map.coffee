@@ -11,6 +11,10 @@ $ ->
     closeAllYears()
     return false
 
+  $('.year .overlay-map').on 'click', ->
+    toggleMapOverlay($(@).siblings('img'))
+    return false
+
   $('.year').hover ->
     if !$(@).hasClass('active')
       activateMapHint(@)
@@ -72,6 +76,9 @@ closeAllYears = ->
   $('.year').removeClass 'inactive'
   $('.graph-key').removeClass 'inactive'
   $(".map .land path").attr 'active', ''
+
+toggleMapOverlay = (map) ->
+  $(map).toggleClass 'active'
 
 activateMapHint = (timeline_item) ->
   map_section = findMapSectionViaTimeline(timeline_item)
