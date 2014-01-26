@@ -29,6 +29,17 @@ body {
   }
 }
 
+.harbor-marker {
+  color: rgba(255, 255, 255, .3);
+  font-size: 7vh;
+  letter-spacing: 3px;
+  line-height: 1;
+  margin: 0;
+  @include position(absolute, 46.5vh 10vw 0 0);
+  text-transform: uppercase;
+  z-index: 1;
+}
+
 .intro {
   align-items: center;
   //@include animation(intro-intro 3s ease both);
