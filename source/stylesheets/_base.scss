@@ -128,7 +128,6 @@ body {
     }
 
     &.active {
-      box-shadow: 0 0 60px 20px rgba(0, 0, 0, .15);
       cursor: default;
       height: 100vh;
       left: 50% !important;
@@ -219,7 +218,7 @@ body {
     @include transition(.3s);
 
     &[hint=hint], &[active=active] {
-      fill: #fff !important;
+      @include animation(pulse 2s ease infinite);
     }
   }
 
