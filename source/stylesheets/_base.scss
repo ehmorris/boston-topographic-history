@@ -137,7 +137,7 @@ body {
   z-index: 2;
 
   &.active {
-    @include animation(graph-intro 1s ease both);
+    @include animation(fade-in 1s ease both);
     @include animation-delay(.75s);
   }
 
@@ -263,6 +263,48 @@ body {
 
   &.active {
     @include animation(map-intro 1s ease both);
+
+    .westcove, .millpond, .southcove, .greatcove, .southend, .backbay {
+      @include animation(fade-in 1s ease both); 
+    }
+
+    .westcove {
+      $beginning-year-percent: .4675;
+      @include animation-delay($beginning-year-percent * $timeline-duration);
+    }
+
+    .millpond {
+      $beginning-year-percent: .4783;
+      @include animation-delay($beginning-year-percent * $timeline-duration);
+    }
+
+    .southcove {
+      $beginning-year-percent: .5405;
+      @include animation-delay($beginning-year-percent * $timeline-duration);
+    }
+
+    .greatcove {
+      $beginning-year-percent: .5486;
+      @include animation-delay($beginning-year-percent * $timeline-duration);
+    }
+
+    .southend {
+      $beginning-year-percent: .5675;
+      @include animation-delay($beginning-year-percent * $timeline-duration);
+    }
+
+    .backbay {
+      $beginning-year-percent: .6135;
+      @include animation-delay($beginning-year-percent * $timeline-duration);
+    }
+
+    @for $path from 1 through 4 {
+      .water path:nth-child(#{$path}) {
+        $delay: (.68 * $timeline-duration) + (($path - 1) / 3);
+        @include animation(fade-in-partial 3s ease both);
+        @include animation-delay($delay);
+      }
+    }
   }
 
   .land path {
@@ -270,7 +312,7 @@ body {
     @include transition(.3s);
 
     &[hint=hint], &[active=active] {
-      @include animation(pulse 2s ease infinite);
+      fill: white !important;
     }
   }
 

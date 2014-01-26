@@ -42,13 +42,23 @@
   }
 }
 
-@include keyframes(graph-intro) {
+@include keyframes(fade-in) {
   0% {
     opacity: 0;
   }
 
   100% {
     opacity: 1;
+  }
+}
+
+@include keyframes(fade-in-partial) {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: .3;
   }
 }
 
