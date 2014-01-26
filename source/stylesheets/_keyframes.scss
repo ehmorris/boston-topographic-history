@@ -79,3 +79,13 @@
     @include transform(scale(1) translateX(0%));
   }
 }
+
+@include keyframes(time-marker) {
+  0% {
+    left: 0%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}

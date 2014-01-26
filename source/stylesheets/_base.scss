@@ -37,7 +37,20 @@ body {
   margin: 0;
   @include position(absolute, 46.5vh 10vw 0 0);
   text-transform: uppercase;
+  @include user-select(none);
   z-index: 1;
+}
+
+.time-marker {
+  background: rgb(255, 255, 255);
+  height: 30vh;
+  @include position(absolute, 0px 0 0 0px);
+  width: 2px;
+  z-index: 1;
+
+  &.active {
+    @include animation(time-marker 10s linear both);
+  }
 }
 
 .intro {
