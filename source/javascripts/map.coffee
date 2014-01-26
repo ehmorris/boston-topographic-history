@@ -25,6 +25,8 @@ $ ->
     $('.intro').addClass 'inactive'
     $('.map').attr 'class', 'map active'
     $('.graph').addClass 'active'
+    animateCurrentYear($('.current-year span:first'))
+    $('.time-marker').addClass 'active'
     return false
 
 plotGraph = ->
@@ -42,6 +44,17 @@ plotGraph = ->
       left: left_percent+'%',
       width: width_percent+'%'
     }
+
+animateCurrentYear = (year) ->
+  if $(year).prev('span').length
+    $(year).prev('span').css('opacity', 0)
+
+  $(year).css('opacity', 1)
+
+  if $(year).next('span').length  
+    setTimeout ->
+      animateCurrentYear($(year).next('span'))
+    , 24.7
 
 activateDetailSectionViaMap = (map_section) ->
   graph_target = findTimelineItemViaMap(map_section)

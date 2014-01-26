@@ -29,7 +29,7 @@ body {
   }
 }
 
-.harbor-marker {
+.harbor-marker, .current-year {
   color: rgba(255, 255, 255, .3);
   font-size: 7vh;
   letter-spacing: 3px;
@@ -41,6 +41,15 @@ body {
   z-index: 1;
 }
 
+.current-year span {
+  position: absolute;
+  opacity: 0;
+
+  &:last-child {
+    opacity: 0 !important;
+  }
+}
+
 .time-marker {
   background: rgb(255, 255, 255);
   height: 30vh;
@@ -49,7 +58,7 @@ body {
   z-index: 1;
 
   &.active {
-    @include animation(time-marker 10s linear both);
+    @include animation(time-marker $timeline-duration linear both);
   }
 }
 
@@ -143,8 +152,7 @@ body {
     }
 
     &.hint {
-      @include transform(scale(1.2));
-      z-index: 3;
+      background: #fff;
     }
 
     &.inactive {
