@@ -214,7 +214,7 @@ body {
     @include animation(map-intro 1s ease both);
   }
 
-  path {
+  .land path {
     cursor: pointer;
     @include transition(.3s);
 
@@ -223,12 +223,12 @@ body {
     }
   }
 
-  path.original {
+  .land path.original {
     cursor: default;
   }
 
   @for $path from 1 through 7 {
-    path:nth-child(#{$path}) {
+    .land path:nth-child(#{$path}) {
       $path-color-multiplier: $path + $color-wheel-rotation;
       fill: hsl($path-color-multiplier*$color-wheel-difference, $saturation, $lightness);
     }
