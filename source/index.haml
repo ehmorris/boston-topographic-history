@@ -1,0 +1,85 @@
+.title
+  %h1
+    Boston's Topographic History
+    %span 1630–2000
+
+%h2.harbor-marker Boston Harbor
+
+%h2.current-year
+  - 371.times do |index|
+    %span= index + 1630
+
+.time-marker
+
+.intro
+  %p
+    Boston was originally a small, hilly bulb of land surrounded by salt marshes, connected to the mainland by a thin neck. John Winthrop settled the isthmus in 1630 with just a few hundred people. Over the course of the next few decades, The Great Migration carried tens of thousands from Europe to New England, and eventually the city felt the need to expand. Many of the alcoves which created natural harbors for Boston were shallow, and in the early 1800s, Boston began filling them in. Over the course of more than 100 years and almost ten seperate projects, Boston more than tripled its area.
+    = link_to 'OK', '#', class: 'end-intro'
+
+.graph-key
+  .beginning
+    %p 1630
+  .end
+    %p 2000
+
+.graph
+  .year{ 'data-year' => '1803', 'data-duration' => '60', 'data-name' => 'westcove' }
+    %h2 West Cove
+    .desc
+      %h3 1803&#8212;1863
+      %article
+        %p One of the earliest land reclamation projects in the city, starting almost at the same time as the Mill Pond reclamation effort (and overlapping it geographically), the filling of the West Cove created the flat, west side of the modern Beacon Hill neighborhood.
+        = link_to 'Overlay a map of Boston before any land reclamation', '#', class: 'overlay-map'
+        %img{ 'src' => 'images/1775.jpg' }
+      = link_to 'Close', '#', class: 'close'
+  .year{ 'data-year' => '1807', 'data-duration' => '22', 'data-name' => 'millpond' }
+    %h2 Mill Pond
+    .desc
+      %h3 1807&#8212;1829
+      %article
+        %p Mill Pond had been dammed and milled since the first wave of settlers. By the late 1700s, the water had become stagnant and smelly due to trash dumping from the mill. This was Boston's first landfill project — before trains, before steam shovels, before steel supports. Workers cut down the hills of Beacon Hill and moved that soil into the artificial pond — after more than 20 years of continuous work, it was filled.
+        = link_to 'Overlay a map of Mill Pond in the process of being filled', '#', class: 'overlay-map'
+        %img{ 'src' => 'images/1814.jpg' }
+      = link_to 'Close', '#', class: 'close'
+  .year{ 'data-year' => '1830', 'data-duration' => '15', 'data-name' => 'southcove' }
+    %h2 South Cove
+    .desc
+      %h3 1830&#8212;1845
+      %article
+        %p In the 1830s, owners of the wharves along the South Cove, including Griffin’s wharf where the Boston tea party took place, decided filling the cove and wharves to build railroads would be more profitable than keeping the cove open for shipping. The city cut down Fort hill, now the Fort Point neighborhood, and used it to fill the South cove, which created modern day Chinatown. Throughout most of the 19th Century and the early half of the 20th Century, the district was made up of rail yards.
+        %p.cite
+          = link_to 'source', 'http://historyofmassachusetts.org/how-boston-lost-its-hills', target: '_blank'
+      = link_to 'Close', '#', class: 'close'
+  .year{ 'data-year' => '1833', 'data-duration' => '12', 'data-name' => 'greatcove' }
+    %h2 Great Cove
+    .desc
+      %h3 1833&#8212;1845
+      %article
+        %p Part of the same project as the South Cove filling, the Great Cove was also filled with land from Fort Hill. The cove was filled, and the current financial district neighborhood was born. Filling in these coves added almost 300 more acres and created 60 percent more land for the city.
+        %p.cite
+          = link_to 'source', 'http://historyofmassachusetts.org/how-boston-lost-its-hills', target: '_blank'
+      = link_to 'Close', '#', class: 'close'
+  .year{ 'data-year' => '1840', 'data-duration' => '30', 'data-name' => 'southend' }
+    %h2 South End
+    .desc
+      %h3 1840&#8212;1870
+      %article
+        %p A seperate neighborhood, but really part of the larger project of filling in the South Cove. Fill was brought in by trains from large trenches of gravel excavated in Needham for decades to fill the modern South End. To provide stability, and since steel did't exsit yet, a system of lumber supports are submerged below the land.
+        = link_to 'Overlay a map of the South End in the process of being filled', '#', class: 'overlay-map'
+        %img{ 'src' => 'images/1842.jpg' }
+        %p.cite
+          = link_to 'source', 'http://en.wikipedia.org/wiki/South_End,_Boston#Geography', target: '_blank'
+      = link_to 'Close', '#', class: 'close'
+  .year{ 'data-year' => '1857', 'data-duration' => '25', 'data-name' => 'backbay' }
+    %h2 Back Bay
+    .desc
+      %h3 1857&#8212;1882
+      %article
+        %p In 1814, the Boston and Roxbury Mill Corporation built the Boston & Roxbury Mill Dam across the back bay. The dam was intended to harness the power of the tides to create energy for potential mills. Developers also built a toll road on top of the dam. This road bypassed the narrow land bridge, called Boston Neck, that was Boston’s only connection to the mainland at the time.
+        %p However, the contractors didn't consider the environment impact of the dam, and the bay soon became dirty and stagnant. The project was also a financial disaster due to greatly underestimated construction costs. Developers originally predicted the project would only cost $250,000 but it ended up costing $700,000. To further compound the problem, only three mills were ever built near the damn, which brought in only $6,000 in annual revenue.
+        %p Realizing that the state of the bay was a considerable problem, the city began filling in the 700 acres of the bay in 1857. For fifty years, day and night, trains brought gravel from Needham. When the Great Fire of 1872 destroyed much of the city, rubble from the fire was used for fill. The project finally reached completion in 1882. This new land nearly doubled the size of Boston peninsula.
+        %p.cite
+          = link_to 'source', 'http://historyofmassachusetts.org/how-boston-lost-its-hills', target: '_blank'
+      = link_to 'Close', '#', class: 'close'
+
+= partial 'rough-vector'
