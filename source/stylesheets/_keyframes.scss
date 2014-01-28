@@ -99,3 +99,24 @@
     left: 100%;
   }
 }
+
+
+@include keyframes(current-year) {
+  0% {
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 0;
+    z-index: 3;
+  }
+
+  100% {
+    opacity: 0;
+    z-index: -1;
+  }
+}

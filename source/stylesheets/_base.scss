@@ -53,6 +53,10 @@ body {
   width: 100%;
   z-index: 3;
 
+  &.active {
+    @include animation(current-year $timeline-duration ease both);
+  }
+
   span {
     @include position(absolute, 0 0 0 0px);
     opacity: 0;

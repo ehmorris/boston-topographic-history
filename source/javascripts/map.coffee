@@ -50,6 +50,8 @@ plotGraph = ->
     }
 
 animateCurrentYear = (year) ->
+  $(year).parent('.current-year').addClass 'active'
+
   if $(year).prev('span').length
     $(year).prev('span').css 'display', 'none'
 
